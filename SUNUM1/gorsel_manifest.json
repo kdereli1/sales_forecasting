@@ -1,0 +1,287 @@
+[
+  {
+    "cell": 1,
+    "file": "01_monthly_time_series.png",
+    "comment": ""
+  },
+  {
+    "cell": 1,
+    "file": "01_seasonal_curves.png",
+    "comment": ""
+  },
+  {
+    "cell": 1,
+    "file": "01_monthly_boxplot.png",
+    "comment": ""
+  },
+  {
+    "cell": 1,
+    "file": "01_trend_seasonality.png",
+    "comment": ""
+  },
+  {
+    "cell": 3,
+    "file": "03_test_predictions_comparison.png",
+    "comment": "Controlled calendar correction: keep the stable baseline and calibrate the known May 2026 event uplift."
+  },
+  {
+    "cell": 3,
+    "file": "03_forecast_errors.png",
+    "comment": "Controlled calendar correction: keep the stable baseline and calibrate the known May 2026 event uplift."
+  },
+  {
+    "cell": 14,
+    "file": "14_top20_hotels_monthly_inhouse_heatmap.png",
+    "comment": "Visualize the 20 selected hotels and print the complete 20-hotel ranking compactly."
+  },
+  {
+    "cell": 14,
+    "file": "14_top20_hotels_january_july_by_year.png",
+    "comment": "Visualize the 20 selected hotels and print the complete 20-hotel ranking compactly."
+  },
+  {
+    "cell": 15,
+    "file": "15_top20_2026_actual_vs_best_model.png",
+    "comment": "Corrected Top 20: select hotels by 2026 January-July occupied nights only."
+  },
+  {
+    "cell": 16,
+    "file": "16_top20_2026_actual_vs_best_model_with_metrics.png",
+    "comment": "Final hotel filtering and per-hotel model comparison."
+  },
+  {
+    "cell": 17,
+    "file": "17_top30_season_vs_offseason_heatmaps.png",
+    "comment": "Seasonal analysis for Top 30 hotels selected by observed 2026 January-July inhouse."
+  },
+  {
+    "cell": 17,
+    "file": "17_top30_season_vs_offseason_year_totals.png",
+    "comment": "Seasonal analysis for Top 30 hotels selected by observed 2026 January-July inhouse."
+  },
+  {
+    "cell": 19,
+    "file": "19_top30_district_2025_actual_vs_model_metrics.png",
+    "comment": "District-level seasonal analysis using hotel_region_name as the district proxy."
+  },
+  {
+    "cell": 20,
+    "file": "20_top26_seasonal_2025_actual_vs_model_metrics.png",
+    "comment": "2025 seasonal forecast for the remaining Top 30 hotels."
+  },
+  {
+    "cell": 21,
+    "file": "21_top26_seasonal_error_ratio_rankings.png",
+    "comment": "Rank seasonal model results from best to worst by normalized total error."
+  },
+  {
+    "cell": 22,
+    "file": "22_all_districts_season_offseason_by_year.png",
+    "comment": "All Antalya districts: map hotel regions to official district proxies and aggregate all hotels."
+  },
+  {
+    "cell": 22,
+    "file": "22_all_districts_season_yoy_changes.png",
+    "comment": "All Antalya districts: map hotel regions to official district proxies and aggregate all hotels."
+  },
+  {
+    "cell": 23,
+    "file": "23_cell23_img1.png",
+    "comment": "Full district table and readable plots with district labels on both charts."
+  },
+  {
+    "cell": 23,
+    "file": "23_cell23_img2.png",
+    "comment": "Full district table and readable plots with district labels on both charts."
+  },
+  {
+    "cell": 24,
+    "file": "24_cell24_img1.png",
+    "comment": "Active districts only: exclude official districts with zero inhouse across 2023-2025."
+  },
+  {
+    "cell": 24,
+    "file": "24_cell24_img2.png",
+    "comment": "Active districts only: exclude official districts with zero inhouse across 2023-2025."
+  },
+  {
+    "cell": 25,
+    "file": "25_active_district_2025_actual_vs_model_metrics.png",
+    "comment": "Active district forecasting: self-contained after the main data preparation cell."
+  },
+  {
+    "cell": 25,
+    "file": "25_active_district_2025_error_ratio_rankings.png",
+    "comment": "Active district forecasting: self-contained after the main data preparation cell."
+  },
+  {
+    "cell": 26,
+    "file": "26_filtered_active_district_2025_actual_vs_model_metrics.png",
+    "comment": "Filtered district visuals: exclude low-volume districts without changing prior outputs."
+  },
+  {
+    "cell": 26,
+    "file": "26_filtered_active_district_2025_error_ratio_rankings.png",
+    "comment": "Filtered district visuals: exclude low-volume districts without changing prior outputs."
+  },
+  {
+    "cell": 27,
+    "file": "27_selected_7_districts_2025_actual_vs_model_metrics.png",
+    "comment": "AYLIK ILCE TAHMINI - 2025: Alanya, Kaş, Kemer, Kumluca, Manavgat, Muratpaşa, Serik"
+  },
+  {
+    "cell": 27,
+    "file": "27_selected_7_districts_2025_error_ratio_rankings.png",
+    "comment": "AYLIK ILCE TAHMINI - 2025: Alanya, Kaş, Kemer, Kumluca, Manavgat, Muratpaşa, Serik"
+  },
+  {
+    "cell": 29,
+    "file": "29_district_monthly_mar_jul_2026_actual_vs_prediction.png",
+    "comment": "AYLIK ILCE BACKTESTI: Train 2023-2025 March-July, test 2026 March-July."
+  },
+  {
+    "cell": 29,
+    "file": "29_district_monthly_mar_jul_2026_total_error_ranking.png",
+    "comment": "AYLIK ILCE BACKTESTI: Train 2023-2025 March-July, test 2026 March-July."
+  },
+  {
+    "cell": 32,
+    "file": "32_cell32_img1.png",
+    "comment": "MUGLA: 2022-2026 sezon (Mart-Ekim) vs sezon disi inhouse satis (occupied nights) analizi"
+  },
+  {
+    "cell": 33,
+    "file": "33_cell33_img1.png",
+    "comment": "MUGLA: 2022-2026 aylik inhouse satis (gece) bar gorselleri"
+  },
+  {
+    "cell": 34,
+    "file": "34_cell34_img1.png",
+    "comment": "MUGLA: Antalya stiline benzer cizgi + bar gorselleri (2022-2026)"
+  },
+  {
+    "cell": 35,
+    "file": "35_cell35_img1.png",
+    "comment": "MUGLA DISTRICT MAPPING + INHOUSE VISUALS (2022-01 to 2026-07)"
+  },
+  {
+    "cell": 36,
+    "file": "36_cell36_img1.png",
+    "comment": "Muğla ilce bazli aylik inhouse trendi (2022-01 .. 2026-07) -> 55 ay cizgi grafik"
+  },
+  {
+    "cell": 37,
+    "file": "37_cell37_img1.png",
+    "comment": "Muğla: 2022-2024 sezon/sezon disi ile 2025 tahmini + metrikler"
+  },
+  {
+    "cell": 38,
+    "file": "38_cell38_img1.png",
+    "comment": "Muğla advanced monthly modeling (Antalya ile ayni seviye):"
+  },
+  {
+    "cell": 39,
+    "file": "39_cell39_img1.png",
+    "comment": "Muğla SEZONSAL odakli degerlendirme (2026 testten sadece sezon aylari)"
+  },
+  {
+    "cell": 40,
+    "file": "40_cell40_img1.png",
+    "comment": "Muğla ilce bazli advanced modelleme (Antalya seviyesinde) + SEZONSAL metrik inceleme"
+  },
+  {
+    "cell": 41,
+    "file": "41_cell41_img1.png",
+    "comment": "Muğla ilceleri: her ilce ayri gorsel + model tahmini + metrik kutusu"
+  },
+  {
+    "cell": 43,
+    "file": "43_cell43_img1.png",
+    "comment": "Muğla Top 30 otel: 2026 Ocak-Temmuz secimi ve yil yil sezon/sezon disi inhouse"
+  },
+  {
+    "cell": 47,
+    "file": "47_cell47_img1.png",
+    "comment": "Muğla uygun Top 30 oteller: 2025 sezon tahmini - düzeltilmiş çalıştırma"
+  },
+  {
+    "cell": 47,
+    "file": "47_cell47_img2.png",
+    "comment": "Muğla uygun Top 30 oteller: 2025 sezon tahmini - düzeltilmiş çalıştırma"
+  },
+  {
+    "cell": 47,
+    "file": "47_cell47_img3.png",
+    "comment": "Muğla uygun Top 30 oteller: 2025 sezon tahmini - düzeltilmiş çalıştırma"
+  },
+  {
+    "cell": 47,
+    "file": "47_cell47_img4.png",
+    "comment": "Muğla uygun Top 30 oteller: 2025 sezon tahmini - düzeltilmiş çalıştırma"
+  },
+  {
+    "cell": 47,
+    "file": "47_cell47_img5.png",
+    "comment": "Muğla uygun Top 30 oteller: 2025 sezon tahmini - düzeltilmiş çalıştırma"
+  },
+  {
+    "cell": 47,
+    "file": "47_cell47_img6.png",
+    "comment": "Muğla uygun Top 30 oteller: 2025 sezon tahmini - düzeltilmiş çalıştırma"
+  },
+  {
+    "cell": 47,
+    "file": "47_cell47_img7.png",
+    "comment": "Muğla uygun Top 30 oteller: 2025 sezon tahmini - düzeltilmiş çalıştırma"
+  },
+  {
+    "cell": 47,
+    "file": "47_cell47_img8.png",
+    "comment": "Muğla uygun Top 30 oteller: 2025 sezon tahmini - düzeltilmiş çalıştırma"
+  },
+  {
+    "cell": 47,
+    "file": "47_cell47_img9.png",
+    "comment": "Muğla uygun Top 30 oteller: 2025 sezon tahmini - düzeltilmiş çalıştırma"
+  },
+  {
+    "cell": 47,
+    "file": "47_cell47_img10.png",
+    "comment": "Muğla uygun Top 30 oteller: 2025 sezon tahmini - düzeltilmiş çalıştırma"
+  },
+  {
+    "cell": 47,
+    "file": "47_cell47_img11.png",
+    "comment": "Muğla uygun Top 30 oteller: 2025 sezon tahmini - düzeltilmiş çalıştırma"
+  },
+  {
+    "cell": 47,
+    "file": "47_cell47_img12.png",
+    "comment": "Muğla uygun Top 30 oteller: 2025 sezon tahmini - düzeltilmiş çalıştırma"
+  },
+  {
+    "cell": 49,
+    "file": "49_mugla_12_2026_jan_jul_sarimax_may_june_backtest_metrics.png",
+    "comment": ""
+  },
+  {
+    "cell": 50,
+    "file": "50_cell50_img1.png",
+    "comment": "Muğla otel görselleştirmeleri: filtreli 12 otel ve 2026 Ocak-Temmuz inhouse'a göre ilk 50 otel."
+  },
+  {
+    "cell": 50,
+    "file": "50_cell50_img2.png",
+    "comment": "Muğla otel görselleştirmeleri: filtreli 12 otel ve 2026 Ocak-Temmuz inhouse'a göre ilk 50 otel."
+  },
+  {
+    "cell": 50,
+    "file": "50_cell50_img3.png",
+    "comment": "Muğla otel görselleştirmeleri: filtreli 12 otel ve 2026 Ocak-Temmuz inhouse'a göre ilk 50 otel."
+  },
+  {
+    "cell": 50,
+    "file": "50_cell50_img4.png",
+    "comment": "Muğla otel görselleştirmeleri: filtreli 12 otel ve 2026 Ocak-Temmuz inhouse'a göre ilk 50 otel."
+  }
+]
