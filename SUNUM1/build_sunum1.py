@@ -29,7 +29,13 @@ BLANK = prs.slide_layouts[6]
 
 def img(name):
     path = IMAGE_DIR / name
-    return path if path.exists() else None
+    if path.exists():
+        return path
+    for output_dir in (SUNUM_DIR.parent / "outputs" / "OUTPUT_SARIMA", SUNUM_DIR.parent / "outputs" / "OUTPUT_SARIMA_TUNED"):
+        path = output_dir / name
+        if path.exists():
+            return path
+    return None
 
 
 def add_band(slide, title, subtitle=None, color=DARK):
@@ -472,10 +478,9 @@ slide_full_image(
 
 slide_full_image(
     "Antalya · İlçe Bazlı 2025 Backtest",
-    "Eğitim 2023-2024 → Test 2025 · her ilçe için seçilen model ve metrikler",
-    "26_filtered_active_district_2025_actual_vs_model_metrics.png",
-    "Panellerde her ilçenin gerçek ve tahmin eğrisi, kutuda MAPE/WMAPE/R² ve sezon-sezon dışı "
-    "hata oranı var. Kemer ve Alanya'nın uyumuna dikkat çek.",
+    "Eğitim 2023-2024 → Test 2025 · SARIMAX + eğitim dönemi takvim düzeltmesi",
+    "sunum1_2025_district_clean.png",
+    "Her panelde gerçek ve SARIMAX + düzeltme tahmini, WMAPE ve toplam inhouse hata oranı gösterilir.",
     color=ANT,
 )
 
@@ -508,38 +513,36 @@ notes(slide, "Model dağılımının karışık olması bilinçli tasarımın so
 slide_full_image(
     "Antalya · Seçili 7 İlçe, 2025 Aylık Tahmin",
     "Alanya · Kaş · Kemer · Kumluca · Manavgat · Muratpaşa · Serik",
-    "27_selected_7_districts_2025_actual_vs_model_metrics.png",
-    "Karar için en anlamlı 7 ilçe. Her panelde seçilen model, MAPE, WMAPE, R² ve sezon/sezon dışı "
-    "hata oranları yazılı.",
+    "sunum1_2025_district_clean.png",
+    "Karar için seçilen 7 ilçe. Her panelde SARIMAX + takvim düzeltmesi, WMAPE ve toplam inhouse hata oranı yazılı.",
     color=ANT,
 )
 
 slide = prs.slides.add_slide(BLANK)
-add_band(slide, "Antalya · İlçe 2026 Mart-Temmuz Backtesti", "Ridge (ay etkileri + yıl trendi) · eğitim 2023-2025", color=ANT)
-path = img("29_district_monthly_mar_jul_2026_actual_vs_prediction.png")
+add_band(slide, "Antalya · İlçe 2026 Mart-Temmuz Backtesti", "SARIMAX + Mayıs/Haziran takvim düzeltmesi · eğitim 2023-2025", color=ANT)
+path = img("antalya_district_2026_wmape_ranking.png")
 if path:
     add_picture_fit(slide, path, Inches(0.35), Inches(1.2), Inches(8.0), Inches(5.9))
-ridge_table = pd.DataFrame([
-    ["Kumluca", "26,2", "191,5", "0,93"],
-    ["Muratpaşa", "51,0", "114,2", "0,46"],
-    ["Alanya", "53,0", "224,0", "0,66"],
-    ["Serik", "60,5", "164,8", "0,54"],
-    ["Kaş", "61,6", "251,7", "0,65"],
-    ["Manavgat", "64,1", "499,5", "0,54"],
-    ["Kemer", "66,6", "575,3", "0,66"],
+sarimax_district_table = pd.DataFrame([
+    ["Alanya", "27,3", "9,2", "0,91"],
+    ["Serik", "29,1", "13,3", "0,87"],
+    ["Kumluca", "29,6", "20,7", "0,92"],
+    ["Kemer", "36,2", "4,8", "0,89"],
+    ["Muratpaşa", "35,5", "19,6", "0,88"],
+    ["Manavgat", "40,3", "36,0", "0,83"],
+    ["Kaş", "98,4", "96,1", "0,44"],
 ])
-ridge_table.columns = ["İlçe", "WMAPE %", "MAPE %", "R²"]
-add_table(slide, ridge_table, Inches(8.55), Inches(1.45), Inches(4.4), Inches(3.1),
-          col_widths=[0.34, 0.22, 0.24, 0.20], size=11.5)
+sarimax_district_table.columns = ["İlçe", "WMAPE %", "Toplam hata %", "R²"]
+add_table(slide, sarimax_district_table, Inches(8.55), Inches(1.45), Inches(4.4), Inches(3.1),
+          col_widths=[0.30, 0.22, 0.28, 0.20], size=10.5)
 add_text(slide, Inches(8.55), Inches(4.8), Inches(4.4), Inches(2.3), [
-    "Neden 2025'ten kötü?",
-    "- Test dönemi tam da bayramın kaydığı aylar (Mar-Tem).",
-    "- Ridge modeline takvim düzeltmesi uygulanmadı.",
-    "- MAPE'lerin %500'e çıkması düşük hacimli",
-    "  Mart-Nisan aylarından kaynaklanıyor.",
+    "Okuma",
+    "- Takvim düzeltmesi eğitim artıklarından hesaplandı.",
+    "- En düşük toplam hata: Kemer (%4,8) ve Alanya (%9,2).",
+    "- Kaş'ta düşük hacim nedeniyle oranlar yüksek; karar için dikkat.",
 ], size=12)
-notes(slide, "Bu slayt takvim düzeltmesinin değerini dolaylı kanıtlıyor: düzeltme uygulanmayan "
-             "Ridge modeli aynı dönemde çok daha kötü.")
+notes(slide, "Bu slayt Ridge yerine SARIMAX + eğitim dönemi takvim düzeltmesini gösterir. WMAPE ile "
+             "toplam inhouse hata oranı birlikte okunmalıdır.")
 
 # --- Antalya otel
 slide_full_image(
@@ -561,25 +564,26 @@ slide_full_image(
 )
 
 slide = prs.slides.add_slide(BLANK)
-add_band(slide, "Antalya · Otel Bazlı 2026 Backtest", "Filtre: 2023-2025 Ocak-Temmuz inhouse ≥ 200 gece", color=ANT)
-path = img("16_top20_2026_actual_vs_best_model_with_metrics.png")
+add_band(slide, "Antalya · Otel Bazlı 2026 Backtest", "SARIMAX + Mayıs/Haziran takvim düzeltmesi · filtre: 2023-2025 Ocak-Temmuz ≥ 200 gece", color=ANT)
+path = img("top20_2026_mar_jul_sarimax_may_june_backtest_metrics.png")
 if path:
     add_picture_fit(slide, path, Inches(0.35), Inches(1.2), Inches(8.1), Inches(5.9))
 hotel_table = pd.DataFrame([
-    ["Sueno Hotels Deluxe Belek", "Prophet", "31,9", "0,89"],
-    ["Robinson Çamyuva", "SARIMAX", "32,5", "0,89"],
-    ["Belek Beach Resort", "SARIMAX", "36,3", "0,82"],
-    ["Crystal Admiral Aqua", "Prophet", "44,8", "0,71"],
-    ["Swandor Topkapı Palace", "Prophet", "48,1", "0,45"],
-    ["Crystal Waterworld", "Prophet", "59,2", "0,62"],
-    ["Champion Holiday Village", "SARIMAX", "70,1", "0,38"],
+    ["Annabella Diamond", "SARIMAX + düzeltme", "22,2", "14,3", "0,85"],
+    ["Swandor Topkapı Palace", "SARIMAX + düzeltme", "22,6", "13,0", "0,78"],
+    ["Crystal Admiral Aqua", "SARIMAX + düzeltme", "27,0", "26,1", "0,83"],
+    ["Robinson Çamyuva", "SARIMAX", "33,5", "31,7", "0,84"],
+    ["Belek Beach Resort", "SARIMAX + düzeltme", "38,4", "17,6", "0,75"],
+    ["Sueno Hotels Deluxe", "SARIMAX + düzeltme", "40,0", "22,4", "0,74"],
+    ["Champion Holiday Village", "SARIMAX + düzeltme", "70,1", "55,4", "0,47"],
 ])
-hotel_table.columns = ["Otel", "Model", "WMAPE %", "R²"]
+hotel_table.columns = ["Otel", "Model", "WMAPE %", "Toplam hata %", "R²"]
 add_table(slide, hotel_table, Inches(8.65), Inches(1.45), Inches(4.3), Inches(3.0),
-          col_widths=[0.44, 0.24, 0.18, 0.14], size=10.5)
+          col_widths=[0.35, 0.25, 0.15, 0.15, 0.10], size=8.8)
 add_text(slide, Inches(8.65), Inches(4.7), Inches(4.3), Inches(2.4), [
     "Yorum",
-    "- En iyi oteller %32-36 bandında.",
+    "- En iyi oteller %22-27 WMAPE bandında.",
+    "- Toplam inhouse hata oranı ayrıca raporlanıyor.",
     "- Otel seviyesinde hata şehirden yüksek —",
     "  bu beklenen davranış (agregasyon gürültüyü söndürür).",
     "- %60 üzeri otellerde model önerilmez.",
@@ -936,7 +940,7 @@ for text in [
 notes(slide, "Soru-cevap. Sık sorular: '%17,6 nasıl?' → 18. slayt. 'Hangi şehir daha iyi?' → "
              "16. slayt. 'Marmaris ne oldu?' → 14. slayt.")
 
-output = SUNUM_DIR / "Antalya_Mugla_Talep_Analizi_SUNUM1.pptx"
+output = SUNUM_DIR / "Antalya_Mugla_Talep_Analizi_SUNUM1_SARIMAX.pptx"
 prs.save(output)
 print(f"Slayt sayisi: {len(prs.slides._sldIdLst)}")
 print(f"Kaydedildi: {output}")
