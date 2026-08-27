@@ -18,5 +18,11 @@ venv/
 .DS_Store
 Thumbs.db
 
+# Large files (> 100MB)
+data/*.csv
+output1/*.csv
+data/*.parquet
+*.xlsx
+
 # Data (optional - veri dosyasi buyukse acmayi dusun)
 # data/*.csvdata/*.csv
